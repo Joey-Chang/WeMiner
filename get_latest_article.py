@@ -36,7 +36,7 @@ def get_lastest_article(wechat_id_or_name):
             'introduction': introduction.replace('red_beg', '').replace('red_end', ''),
             'authentication': authentication[0] if authentication else ''
         })
-    print(relist)
+    print(relist[0]['profile_url'])
 
 
 def gen_search_gzh_url(keyword, page=1):
