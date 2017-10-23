@@ -1,5 +1,5 @@
 # WeMiner
-WeChat
+
 # DONE
 - 完成函数get_lastest_article,实现公众号的最新一篇文章的抓取,返回这篇文章的即时url
 # TODO
@@ -7,6 +7,8 @@ WeChat
 - 设计flask前端页面
 - 从指定公众号的最新十篇文章中找到符合特定要求的文章
 
+# 一些爬虫的开源项目
+http://blog.csdn.net/baidu_21833433/article/details/70315081
 
 # 代码分享和心得
 每个人可以在git库里面新建自己的文件夹，分享自己的探索发现。
