@@ -1,7 +1,7 @@
 # WeMiner
 
 # DONE
-- 完成函数get_lastest_article,实现公众号的最新一篇文章的抓取,返回这篇文章的即时url
+- 完成函数get_lastest_article部分功能,实现公众号的抓取,返回这个公众号的即时url
 # TODO
 - 加入代理池,来应对反爬虫机制
 - 设计flask前端页面
