@@ -1,0 +1,81 @@
+{% extends "layout.html" %}
+{% block title %}天气查询系统{% endblock %}
+{% block body %}
+<script type=text/javascript>
+$(document).ready(function () {
+    $('.ui button').click(function () {
+      $("#result").empty()
+      var order;
+      order = $(this).attr('id')
+      if (order == "search"){
+        value = $("#value").val(); //#表示id
+      } else if (order=="update") {
+        value = $("#value").val(); //#表示id
+      } else {
+        value = null;
+      };
+      $.post($SCRIPT_ROOT + '/_get_weather_info', {
+        order: order, value : value
+      }, function(data) {
+        if("error" in data.result){
+          $("#result").text(data.result.error);
+        } else if ("history" in data.result) {
+          d = data.result.history
+          // alert(d)
+          //list的遍历一定要用c语言形式的for循环
+          for (i = 0; i < d.length; i++) {
+            // alert(d[i]);
+            add_record(d[i]);
+          }
+          // $("#result").text(data.result.history)
+        } else if ("help" in data.result) {
+          $("#result").text(data.result.help)
+        } else if ("update" in data.result) {
+          $("#result").text(data.result.update)
+        } else {
+          var city = data.result.city;
+          var weather = data.result.weather;
+          var temperature = data.result.temperature;
+          var last_update = data.result.last_update;
+          $("#result").append("<p>城市：" + city + "</p>");
+          $("#result").append("<p>天气：" + weather + "</p>");
+          $("#result").append("<p>温度：" + temperature + "</p>");
+          $("#result").append("<p>更新时间：" + last_update + "</p>");
+        }
+      });
+      return false;
+    });
+});
+function add_record(d) {
+  var city = d.city;
+  var weather = d.weather;
+  var temperature = d.temperature;
+  var last_update = d.last_update;
+  $("#result").append("<p>城市：" + city + "</p>");
+  $("#result").append("<p>天气：" + weather + "</p>");
+  $("#result").append("<p>温度：" + temperature + "</p>");
+  $("#result").append("<p>更新时间：" + last_update + "</p>");
+}
+</script>
+  <div class="ui top fixed borderless segment">
+    <div class="">
+      <h1 class="ui center aligned header">天气查询系统</h1>
+    </div>
+  </div>
+  <div class="ui segment fixed vertical basic">
+    <div class="ui basic segment second-level">
+      <div class="ui segment center aligned basic">
+        <div class="ui input">
+          <input id="value" type="text" placeholder="城市名称(中文或者拼音)">
+        </div>
+      </div>
+      <div class="ui four buttons">
+        <button class="ui button" id="search"><h4>查询</h4></button>
+        <button class="ui button" id="help"><h4>帮助</h4></button>
+        <button class="ui button" id="history"><h4>历史</h4></button>
+        <button class="ui button" id="update"><h4>更新</h4></button>
+      </div>
+  </div>
+  <div class="ui container center aligned" id=result>
+  </div>
+{% endblock %}

@@ -1,0 +1,41 @@
+.ui.segment {
+  margin-top: 10px;
+  background-color: rgb(244, 250, 246);
+}
+/*.ui.basic.segment.second-level {
+  position: relative;
+  padding-left: 40%;
+  padding-right: 40%;
+  margin-top: 100px;
+  margin-bottom: 10px;
+}*/
+.ui.active.button {
+  background-color: white;
+  font-weight: bold;
+}
+/*.ui.vertical.basic.segment.recommended {
+  margin-top: 0px;
+  padding-left: 20%;
+  padding-right: 20%;
+}*/
+/*.ui.very.padded.basic.segment.fourth-level {
+  position: relative;
+  padding-left: 45%;
+  padding-right: 45%;
+}*/
+.ui.card>.ui.image>img {
+  height: 193px;
+  object-fit: cover;
+}
+.column>span {
+  color: rgb(212, 208, 209);
+}
+.column>i {
+  color: rgb(128, 125, 126);
+}
+.ui.button>h4 {
+  color: rgb(128, 125, 126);
+}
+.ui.active.button>h4 {
+  color: rgb(14, 14, 14);
+}
